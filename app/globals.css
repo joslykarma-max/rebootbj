@@ -1,0 +1,92 @@
+@import "tailwindcss";
+
+/* ── RESET & BASE ── */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #000;
+  color: #fff;
+  font-family: var(--font-dm-sans, 'DM Sans', sans-serif);
+  cursor: none;
+}
+
+:root {
+  --font-playfair: 'Playfair Display', serif;
+  --font-dm-sans: 'DM Sans', sans-serif;
+  --orange: #E8820C;
+}
+
+/* ── SCROLLBAR INVISIBLE ── */
+::-webkit-scrollbar { width: 1px; }
+::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.08); }
+
+/* ── CURSOR CUSTOM ── */
+.cur-ring {
+  position: absolute;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s, height 0.3s, background 0.3s, border-color 0.3s, opacity 0.3s;
+}
+
+/* ── ANIMATIONS ── */
+@keyframes slideUp {
+  to { transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+@keyframes trackFill {
+  to { left: 0; }
+}
+
+@keyframes drift {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(30px, 20px) scale(1.05); }
+}
+
+@keyframes globeGlow {
+  0% { box-shadow: 0 0 60px rgba(40,80,20,.2), 0 0 120px rgba(40,80,20,.08); }
+  100% { box-shadow: 0 0 80px rgba(40,80,20,.3), 0 0 160px rgba(40,80,20,.12); }
+}
+
+@keyframes expand1 {
+  0% { width: 14px; height: 14px; opacity: .5; }
+  100% { width: 40px; height: 40px; opacity: 0; }
+}
+
+@keyframes expand2 {
+  0% { width: 14px; height: 14px; opacity: .3; }
+  100% { width: 60px; height: 60px; opacity: 0; }
+}
+
+@keyframes scrollDot {
+  0% { top: 6px; opacity: .4; }
+  50% { top: 18px; opacity: .8; }
+  100% { top: 6px; opacity: .4; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes dustFloat {
+  0% { transform: translateY(100vh) scale(0); opacity: 0; }
+  10% { opacity: .4; }
+  90% { opacity: .1; }
+  100% { transform: translateY(-20vh) scale(1); opacity: 0; }
+}
+
+@keyframes orbit {
+  from { transform: rotate(0deg) translateX(80px) rotate(0deg); }
+  to { transform: rotate(360deg) translateX(80px) rotate(-360deg); }
+}
