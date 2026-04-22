@@ -3,7 +3,6 @@ import { useEffect, useRef, useState } from 'react'
 
 import Nav from '@/components/sections/Nav'
 import Hero from '@/components/sections/Hero'
-import StatsStrip from '@/components/sections/StatsStrip'
 import Histoire from '@/components/sections/Histoire'
 import Culture from '@/components/sections/Culture'
 import Destinations from '@/components/sections/Destinations'
@@ -52,7 +51,6 @@ export default function Home() {
 
       <Nav onReserve={() => setAuthOpen(true)} />
       <Hero onReserve={() => setAuthOpen(true)} />
-      <StatsStrip />
       <Histoire onLock={openLock} />
       <Culture />
       <Destinations onLock={openLock} />
