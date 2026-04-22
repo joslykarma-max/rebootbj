@@ -23,7 +23,9 @@ export default function Podcasts() {
           const locked = e.premium && !user.premium
           return (
             <button key={e.id} className={`db-ep${active === e.id ? ' on' : ''}${locked ? ' locked' : ''}`} onClick={() => !locked && setActive(e.id)}>
-              <div className="db-ep-icon">{locked ? '🔒' : '🎧'}</div>
+              <div className="db-ep-cover" style={{ backgroundImage: `url(${e.cover})` }}>
+                {locked && <div className="db-ep-lock">🔒</div>}
+              </div>
               <div className="db-ep-info">
                 <div className="db-ep-title">{e.title}</div>
                 <div className="db-ep-meta">{e.author} · {fmt(e.duration)}{e.premium ? ' · Premium' : ''}</div>

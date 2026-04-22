@@ -85,7 +85,12 @@ nav::before {
   background-size: 400% 400%;
   animation: gradientFlow 10s ease infinite;
 }
-.hero-bg { display: none; }
+.hero-bg {
+  position: absolute; inset: 0;
+  background-image: url('https://images.unsplash.com/photo-1523805009345-7448845a9e53?w=1800&auto=format&fit=crop&q=75');
+  background-size: cover; background-position: center;
+  opacity: .28; mix-blend-mode: luminosity;
+}
 .kente {
   position: absolute; inset: 0; opacity: .03;
   background-image:
@@ -198,11 +203,18 @@ nav::before {
   margin-top: 80px; border: 1px solid rgba(0,0,0,.1);
 }
 .hist-item {
-  padding: 48px; border-right: 1px solid rgba(0,0,0,.08);
+  padding: 0; border-right: 1px solid rgba(0,0,0,.08);
   border-bottom: 1px solid rgba(0,0,0,.08);
   position: relative; overflow: hidden;  transition: all .3s;
   background: var(--light);
+  display: grid; grid-template-columns: 40% 1fr;
 }
+.hist-img {
+  background-size: cover; background-position: center;
+  min-height: 260px; transition: transform .4s;
+}
+.hist-item:hover .hist-img { transform: scale(1.05); }
+.hist-body { padding: 36px 36px 60px; position: relative; }
 .hist-item:hover { background: var(--dark); }
 .hist-item:nth-child(2n) { border-right: none; }
 .hist-item:nth-child(n+3) { border-bottom: none; }
@@ -304,12 +316,27 @@ nav::before {
   border-color: var(--o);
 }
 .dest-bg {
-  position: absolute; inset: 0; font-size: 120px;
-  display: flex; align-items: center; justify-content: center;
-  filter: grayscale(1); opacity: .05; transition: opacity .3s, transform .4s;
+  position: absolute; inset: 0;
+  opacity: .6; transition: opacity .3s, transform .4s;
 }
-.dest-card:hover .dest-bg { opacity: .1; transform: scale(1.1); }
+.dest-card:hover .dest-bg { opacity: .9; transform: scale(1.05); }
+.dest-overlay {
+  position: absolute; inset: 0; z-index: 1;
+  background: linear-gradient(to top, rgba(0,0,0,.85) 0%, rgba(0,0,0,.4) 50%, rgba(0,0,0,.15) 100%);
+  transition: background .3s;
+}
+.dest-card:hover .dest-overlay {
+  background: linear-gradient(to top, rgba(0,0,0,.92) 0%, rgba(0,0,0,.55) 50%, rgba(0,0,0,.25) 100%);
+}
+.dest-emoji {
+  position: absolute; top: 20px; right: 24px; font-size: 28px; z-index: 2;
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,.4));
+}
 .dest-content { position: relative; z-index: 2; }
+.dest-card .dc-tag { color: rgba(255,255,255,.7); }
+.dest-card .dc-name { color: #fff !important; }
+.dest-card .dc-desc { color: rgba(255,255,255,.75) !important; }
+.dest-card .dc-price { color: rgba(255,255,255,.55) !important; }
 .dc-tag { font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; transition: color .3s; }
 .dest-card:hover .dc-tag { color: var(--o); }
 .dc-name { font-family: var(--font-cormorant); font-size: 32px; font-weight: 600; line-height: 1.1; margin-bottom: 8px; color: var(--dark); transition: color .3s; }
@@ -596,6 +623,8 @@ select.fi option { background: var(--light); }
 .db-ep.on { border-color: var(--o); background: rgba(247, 148, 29, .04); }
 .db-ep.locked { opacity: .5; cursor: not-allowed; }
 .db-ep-icon { font-size: 22px; }
+.db-ep-cover { width: 72px; height: 72px; border-radius: 10px; background-size: cover; background-position: center; flex-shrink: 0; position: relative; }
+.db-ep-lock { position: absolute; inset: 0; background: rgba(0,0,0,.65); display: grid; place-items: center; border-radius: 10px; font-size: 22px; }
 .db-ep-title { font-weight: 600; }
 .db-ep-meta { font-size: 12px; color: var(--db-muted); margin: 2px 0; }
 .db-ep-desc { font-size: 13px; color: var(--db-muted); }

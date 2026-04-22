@@ -30,17 +30,18 @@ export type Episode = {
   duration: number
   premium: boolean
   desc: string
+  cover: string
 }
 
 export const EPISODES: Episode[] = [
-  { id: 'ep1', title: 'Les origines du Dahomey', author: 'Prof. Adjovi', duration: 1320, premium: false, desc: 'L\'histoire de la naissance du royaume Fon au VIIe siècle.' },
-  { id: 'ep2', title: 'Les Amazones d\'Abomey', author: 'Dr. Houngbédji', duration: 1680, premium: false, desc: 'L\'armée de guerrières qui a défié les empires coloniaux.' },
-  { id: 'ep3', title: 'Vodoun : entre mythe et réalité', author: 'Mama Hounon', duration: 1500, premium: false, desc: 'Comprendre le Vodoun au-delà des clichés occidentaux.' },
-  { id: 'ep4', title: 'Béhanzin, roi exilé', author: 'Prof. Adjovi', duration: 1800, premium: true, desc: 'La résistance du dernier roi face à la colonisation.' },
-  { id: 'ep5', title: 'Ganvié, la cité lacustre', author: 'Kofi Dossou', duration: 1200, premium: true, desc: 'Comment le peuple Tofinu a bâti une ville sur l\'eau.' },
-  { id: 'ep6', title: 'La route des esclaves', author: 'Dr. Medji', duration: 2100, premium: true, desc: 'De Ouidah aux Amériques, mémoire de la traite.' },
-  { id: 'ep7', title: 'Les Tata Somba', author: 'Arch. Tamou', duration: 1440, premium: true, desc: 'Architecture sacrée du peuple Somba en Atacora.' },
-  { id: 'ep8', title: 'Cotonou, capitale créative', author: 'Aïcha Koudoro', duration: 1560, premium: true, desc: 'Scène artistique et renouveau culturel béninois.' },
+  { id: 'ep1', title: 'Les origines du Dahomey', author: 'Prof. Adjovi', duration: 1320, premium: false, desc: 'L\'histoire de la naissance du royaume Fon au VIIe siècle.', cover: 'https://images.unsplash.com/photo-1533234427049-9e9bb093186d?w=400&auto=format&fit=crop&q=70' },
+  { id: 'ep2', title: 'Les Amazones d\'Abomey', author: 'Dr. Houngbédji', duration: 1680, premium: false, desc: 'L\'armée de guerrières qui a défié les empires coloniaux.', cover: 'https://images.unsplash.com/photo-1604598692017-9e9f49d0bcea?w=400&auto=format&fit=crop&q=70' },
+  { id: 'ep3', title: 'Vodoun : entre mythe et réalité', author: 'Mama Hounon', duration: 1500, premium: false, desc: 'Comprendre le Vodoun au-delà des clichés occidentaux.', cover: 'https://images.unsplash.com/photo-1561361513-2d000a50f0dc?w=400&auto=format&fit=crop&q=70' },
+  { id: 'ep4', title: 'Béhanzin, roi exilé', author: 'Prof. Adjovi', duration: 1800, premium: true, desc: 'La résistance du dernier roi face à la colonisation.', cover: 'https://images.unsplash.com/photo-1580637250481-b78db3e6f84b?w=400&auto=format&fit=crop&q=70' },
+  { id: 'ep5', title: 'Ganvié, la cité lacustre', author: 'Kofi Dossou', duration: 1200, premium: true, desc: 'Comment le peuple Tofinu a bâti une ville sur l\'eau.', cover: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=400&auto=format&fit=crop&q=70' },
+  { id: 'ep6', title: 'La route des esclaves', author: 'Dr. Medji', duration: 2100, premium: true, desc: 'De Ouidah aux Amériques, mémoire de la traite.', cover: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400&auto=format&fit=crop&q=70' },
+  { id: 'ep7', title: 'Les Tata Somba', author: 'Arch. Tamou', duration: 1440, premium: true, desc: 'Architecture sacrée du peuple Somba en Atacora.', cover: 'https://images.unsplash.com/photo-1504432842672-1a79f78e4084?w=400&auto=format&fit=crop&q=70' },
+  { id: 'ep8', title: 'Cotonou, capitale créative', author: 'Aïcha Koudoro', duration: 1560, premium: true, desc: 'Scène artistique et renouveau culturel béninois.', cover: 'https://images.unsplash.com/photo-1577185906981-5a60da3fbaa3?w=400&auto=format&fit=crop&q=70' },
 ]
 
 export type Alert = { id: string; cat: 'evenement' | 'meteo' | 'nature' | 'pratique'; title: string; body: string; date: string }
