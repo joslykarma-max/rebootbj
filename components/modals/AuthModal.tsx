@@ -1,7 +1,7 @@
 'use client'
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { signup, login } from '@/lib/auth'
+import { signup, login, resetPassword } from '@/lib/auth'
 import { useStore } from '@/store/useStore'
 
 type Props = { open: boolean; onClose: () => void }
@@ -11,8 +11,23 @@ export default function AuthModal({ open, onClose }: Props) {
   const [success, setSuccess] = useState(false)
   const [busy, setBusy] = useState(false)
   const [err, setErr] = useState('')
+  const [loginEmail, setLoginEmail] = useState('')
+  const [resetSent, setResetSent] = useState(false)
   const router = useRouter()
   const setUser = useStore(s => s.setUser)
+
+  const handleForgot = async () => {
+    if (!loginEmail) { setErr('Entre ton email d\'abord.'); return }
+    setErr(''); setBusy(true)
+    try {
+      await resetPassword(loginEmail)
+      setResetSent(true)
+    } catch (e: unknown) {
+      setErr(e instanceof Error ? e.message : 'Impossible d\'envoyer le lien')
+    } finally {
+      setBusy(false)
+    }
+  }
 
   const handleSignup = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -122,10 +137,14 @@ export default function AuthModal({ open, onClose }: Props) {
           </form>
         ) : (
           <form onSubmit={handleLogin}>
-            <div className="fg"><label className="fl">Email</label><input className="fi" name="email" type="email" placeholder="kofi@email.com" required /></div>
+            <div className="fg"><label className="fl">Email</label><input className="fi" name="email" type="email" placeholder="kofi@email.com" value={loginEmail} onChange={e => setLoginEmail(e.target.value)} required /></div>
             <div className="fg"><label className="fl">Mot de passe</label><input className="fi" name="password" type="password" placeholder="••••••••" required /></div>
             {err && <div style={{ color: '#ff6b6b', fontSize: 13, margin: '0 0 10px' }}>{err}</div>}
+            {resetSent && <div style={{ color: 'var(--o)', fontSize: 13, margin: '0 0 10px' }}>Email envoyé. Vérifie ta boîte (et les spams).</div>}
             <button type="submit" className="btn-auth" disabled={busy}>{busy ? 'Connexion…' : 'Se connecter →'}</button>
+            <button type="button" onClick={handleForgot} disabled={busy} style={{ background: 'none', border: 0, color: 'var(--muted)', fontSize: 12, textDecoration: 'underline', cursor: 'pointer', marginTop: 10, fontFamily: 'inherit' }}>
+              Mot de passe oublié ?
+            </button>
             <div className="auth-div">ou</div>
             <a href="https://wa.me/22900000000" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
               <button type="button" className="btn-wa">💬 Contacter via WhatsApp</button>

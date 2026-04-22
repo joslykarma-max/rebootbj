@@ -4,6 +4,7 @@ import {
   signOut,
   onAuthStateChanged,
   updateProfile,
+  sendPasswordResetEmail,
   User as FbUser,
 } from 'firebase/auth'
 import { doc, setDoc, getDoc, serverTimestamp } from 'firebase/firestore'
@@ -70,6 +71,10 @@ export async function login(email: string, password: string): Promise<UserProfil
 
 export async function logout() {
   await signOut(auth)
+}
+
+export async function resetPassword(email: string) {
+  await sendPasswordResetEmail(auth, email)
 }
 
 export function watchAuth(cb: (user: FbUser | null) => void) {

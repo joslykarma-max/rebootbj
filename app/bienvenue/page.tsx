@@ -1,7 +1,7 @@
 'use client'
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { signup, login } from '@/lib/auth'
+import { signup, login, resetPassword } from '@/lib/auth'
 import { useStore } from '@/store/useStore'
 
 type Form = {
@@ -29,6 +29,7 @@ export default function Bienvenue() {
   const [busy, setBusy] = useState(false)
   const [err, setErr] = useState('')
   const [existing, setExisting] = useState(false)
+  const [resetSent, setResetSent] = useState(false)
 
   const next = () => setStep(s => s + 1)
   const prev = () => setStep(s => Math.max(0, s - 1))
@@ -60,6 +61,20 @@ export default function Bienvenue() {
     } catch (e: unknown) {
       const h = humanize(e)
       setErr(h.msg); setExisting(h.existing)
+    } finally {
+      setBusy(false)
+    }
+  }
+
+  const forgotPassword = async () => {
+    if (!form.email) { setErr('Entre ton email d\'abord.'); return }
+    setBusy(true); setErr('')
+    try {
+      await resetPassword(form.email)
+      setResetSent(true)
+    } catch (e: unknown) {
+      const h = humanize(e)
+      setErr(h.msg)
     } finally {
       setBusy(false)
     }
@@ -145,10 +160,14 @@ export default function Bienvenue() {
               <input className="ob-input" type="email" placeholder="Votre email" value={form.email} onChange={e => patch({ email: e.target.value })} required />
               <input className="ob-input" type="password" placeholder="Un mot de passe" value={form.password} onChange={e => patch({ password: e.target.value })} minLength={6} required />
               {err && <div className="ob-err">{err}</div>}
+              {resetSent && <div className="ob-hint" style={{ color: 'var(--o)' }}>Email envoyé. Vérifie ta boîte de réception (et les spams) pour réinitialiser ton mot de passe.</div>}
               {existing ? (
                 <>
                   <button type="button" className="ob-btn" onClick={tryLogin} disabled={busy}>
                     {busy ? 'Connexion…' : 'Se connecter avec ce mot de passe →'}
+                  </button>
+                  <button type="button" className="ob-back" onClick={forgotPassword} disabled={busy}>
+                    Mot de passe oublié ?
                   </button>
                   <div className="ob-hint">Tu as déjà un compte — entre ton mot de passe pour te reconnecter.</div>
                 </>
