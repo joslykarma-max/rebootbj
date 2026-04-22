@@ -15,7 +15,7 @@ export default function Nav() {
   }, [])
 
   return (
-    <nav className={scrolled ? 'scrolled' : ''}>
+    <nav className={`site-nav${scrolled ? ' scrolled' : ''}`}>
       <a href="/" className="nav-logo-img">
         <img src="/logo.png" alt="Reboot BJ" />
       </a>
