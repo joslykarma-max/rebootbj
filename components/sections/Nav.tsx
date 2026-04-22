@@ -2,9 +2,7 @@
 import { useEffect, useState } from 'react'
 import { useStore } from '@/store/useStore'
 
-type Props = { onReserve: () => void }
-
-export default function Nav({ onReserve }: Props) {
+export default function Nav() {
   const [scrolled, setScrolled] = useState(false)
   const user = useStore(s => s.user)
   const scroll = (id: string) => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
@@ -18,7 +16,9 @@ export default function Nav({ onReserve }: Props) {
 
   return (
     <nav className={scrolled ? 'scrolled' : ''}>
-      <div className="nav-logo">REBOOT<span>.BJ</span></div>
+      <a href="/" className="nav-logo-img">
+        <img src="/logo.png" alt="Reboot BJ" />
+      </a>
       <ul className="nav-links">
         <li><a href="#histoire" onClick={e => { e.preventDefault(); scroll('histoire') }}>Histoire</a></li>
         <li><a href="#culture" onClick={e => { e.preventDefault(); scroll('culture') }}>Culture</a></li>
@@ -26,7 +26,7 @@ export default function Nav({ onReserve }: Props) {
       </ul>
       {user
         ? <a className="nav-cta" href="/dashboard">Mon espace</a>
-        : <button className="nav-cta" onClick={onReserve}>On fait connaissance ?</button>}
+        : <a className="nav-cta" href="/bienvenue">On fait connaissance ?</a>}
     </nav>
   )
 }

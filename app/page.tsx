@@ -49,8 +49,8 @@ export default function Home() {
       {/* Barre de progression */}
       <div id="progress" ref={progressRef} style={{ width: 0 }} />
 
-      <Nav onReserve={() => setAuthOpen(true)} />
-      <Hero onReserve={() => setAuthOpen(true)} />
+      <Nav />
+      <Hero />
       <Histoire onLock={openLock} />
       <Culture />
       <Destinations onLock={openLock} />

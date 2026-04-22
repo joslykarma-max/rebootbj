@@ -1,9 +1,12 @@
 'use client'
+import { useRouter } from 'next/navigation'
+import { useStore } from '@/store/useStore'
 
-type Props = { onReserve: () => void }
-
-export default function Hero({ onReserve }: Props) {
+export default function Hero() {
+  const router = useRouter()
+  const user = useStore(s => s.user)
   const scrollDown = () => document.getElementById('histoire')?.scrollIntoView({ behavior: 'smooth' })
+  const primary = () => router.push(user ? '/dashboard' : '/bienvenue')
 
   return (
     <section className="hero" id="hero">
@@ -19,7 +22,9 @@ export default function Hero({ onReserve }: Props) {
           Le secret le mieux gardé d&apos;Afrique de l&apos;Ouest.
         </p>
         <div className="hero-actions">
-          <button className="btn-hero" onClick={onReserve}>On fait connaissance ?</button>
+          <button className="btn-hero" onClick={primary}>
+            {user ? `Bonjour ${user.prenom} →` : 'On fait connaissance ?'}
+          </button>
           <button className="btn-gh" onClick={scrollDown}>
             Découvrir <span>→</span>
           </button>

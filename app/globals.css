@@ -66,6 +66,13 @@ nav.scrolled {
 }
 .nav-logo span { color: var(--o); font-weight: 400; }
 nav.scrolled .nav-logo { color: var(--ink); }
+.nav-logo-img { display: block; line-height: 0; position: relative; z-index: 1; }
+.nav-logo-img img {
+  height: 28px; width: auto; display: block;
+  filter: invert(1) brightness(1.1);
+  transition: filter .3s;
+}
+nav.scrolled .nav-logo-img img { filter: none; }
 .nav-links { display: flex; gap: 36px; list-style: none; position: relative; z-index: 1; }
 .nav-links a {
   font-size: 11px; font-weight: 500; color: rgba(245,240,232,.7);
@@ -670,4 +677,115 @@ select.fi option { background: var(--light); }
   .db-tabs-mobile { display: flex; position: fixed; bottom: 0; left: 0; right: 0; background: var(--db-side); border-top: 1px solid var(--db-border); justify-content: space-around; padding: 10px; z-index: 100; }
   .db-tab { background: transparent; border: 0; color: var(--db-muted); padding: 8px; border-radius: 8px; cursor: pointer; font-size: 20px; }
   .db-tab.active { background: var(--o); color: #000; }
+}
+
+/* ── ONBOARDING /bienvenue ── */
+.ob-shell {
+  min-height: 100vh; width: 100%; position: relative;
+  background-size: cover; background-position: center;
+  transition: background-image .6s;
+  display: flex; flex-direction: column; align-items: center;
+  padding: 32px;
+}
+.ob-shell::before {
+  content: ''; position: absolute; inset: 0;
+  animation: kenburns 20s ease-out infinite alternate;
+}
+.ob-veil {
+  position: absolute; inset: 0; background: rgba(10,10,10,.72);
+  backdrop-filter: blur(2px);
+}
+.ob-logo { position: relative; z-index: 2; margin-top: 10px; }
+.ob-logo img { height: 32px; filter: invert(1) brightness(1.1); }
+.ob-dots {
+  position: relative; z-index: 2;
+  display: flex; gap: 10px; margin-top: 22px;
+}
+.ob-dot { width: 28px; height: 2px; background: rgba(245,240,232,.18); transition: background .3s; }
+.ob-dot.on { background: var(--o); }
+.ob-dot.done { background: rgba(245,240,232,.55); }
+.ob-stage {
+  position: relative; z-index: 2; flex: 1;
+  display: grid; place-items: center; width: 100%;
+}
+.ob-card {
+  max-width: 560px; width: 100%; text-align: center;
+  display: flex; flex-direction: column; align-items: center; gap: 22px;
+  animation: obIn .5s ease;
+}
+@keyframes obIn {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.ob-eyebrow {
+  font-family: var(--font-dm);
+  font-size: 11px; letter-spacing: 5px; text-transform: uppercase;
+  color: rgba(245,240,232,.6);
+}
+.ob-step {
+  font-family: var(--font-dm);
+  font-size: 11px; letter-spacing: 4px; text-transform: uppercase;
+  color: var(--o);
+}
+.ob-h1 {
+  font-family: var(--font-cormorant);
+  font-size: clamp(56px, 8vw, 96px);
+  font-weight: 300; line-height: 1;
+  color: var(--light); letter-spacing: -1.5px;
+}
+.ob-h2 {
+  font-family: var(--font-cormorant);
+  font-size: clamp(36px, 5vw, 56px);
+  font-weight: 300; line-height: 1.05;
+  color: var(--light); letter-spacing: -1px;
+}
+.ob-lead {
+  font-family: var(--font-cormorant);
+  font-size: clamp(18px, 2vw, 22px); font-style: italic;
+  color: rgba(245,240,232,.8); max-width: 440px; line-height: 1.5;
+}
+.ob-lead em { color: var(--o); font-style: italic; }
+.ob-choices {
+  display: flex; flex-direction: column; gap: 10px; width: 100%; max-width: 420px;
+}
+.ob-choice {
+  background: rgba(245,240,232,.06); color: var(--light);
+  border: 1px solid rgba(245,240,232,.14);
+  padding: 16px 22px; font-size: 15px; font-family: var(--font-dm);
+  cursor: pointer; transition: all .2s;
+  text-align: left;
+}
+.ob-choice:hover { background: rgba(245,240,232,.12); border-color: rgba(245,240,232,.3); transform: translateX(4px); }
+.ob-choice.on { background: var(--o); color: var(--dark); border-color: var(--o); }
+.ob-form { display: flex; flex-direction: column; gap: 12px; width: 100%; max-width: 380px; }
+.ob-input {
+  background: rgba(245,240,232,.06); color: var(--light);
+  border: 1px solid rgba(245,240,232,.14);
+  padding: 14px 18px; font-size: 15px; font-family: var(--font-dm);
+  outline: none; transition: border-color .2s;
+}
+.ob-input:focus { border-color: var(--o); }
+.ob-input::placeholder { color: rgba(245,240,232,.4); }
+.ob-btn {
+  background: var(--light); color: var(--ink);
+  border: 0; padding: 16px 36px; font-size: 12px; font-weight: 500;
+  letter-spacing: 2.5px; text-transform: uppercase;
+  cursor: pointer; font-family: var(--font-dm);
+  transition: background .2s, transform .2s;
+  margin-top: 4px;
+}
+.ob-btn:hover { background: var(--o); color: var(--light); transform: translateY(-1px); }
+.ob-btn:disabled { opacity: .5; cursor: not-allowed; }
+.ob-back {
+  background: transparent; border: 0; color: rgba(245,240,232,.4);
+  font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+  font-family: var(--font-dm); cursor: pointer; margin-top: 8px;
+  transition: color .2s;
+}
+.ob-back:hover { color: var(--light); }
+.ob-err { color: #ff8a8a; font-size: 13px; font-family: var(--font-dm); }
+
+@media (max-width: 600px) {
+  .ob-h1 { font-size: 52px; }
+  .ob-h2 { font-size: 34px; }
 }
