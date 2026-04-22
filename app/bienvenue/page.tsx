@@ -1,7 +1,7 @@
 'use client'
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { signup } from '@/lib/auth'
+import { signup, login } from '@/lib/auth'
 import { useStore } from '@/store/useStore'
 
 type Form = {
@@ -28,13 +28,24 @@ export default function Bienvenue() {
   const [form, setForm] = useState<Form>({ origine: '', deja: '', interet: '', prenom: '', email: '', password: '' })
   const [busy, setBusy] = useState(false)
   const [err, setErr] = useState('')
+  const [existing, setExisting] = useState(false)
 
   const next = () => setStep(s => s + 1)
   const prev = () => setStep(s => Math.max(0, s - 1))
   const patch = (p: Partial<Form>) => setForm(f => ({ ...f, ...p }))
 
+  const humanize = (e: unknown): { msg: string; existing: boolean } => {
+    const raw = e instanceof Error ? e.message : ''
+    if (raw.includes('auth/email-already-in-use')) return { msg: 'Cet email a déjà un compte.', existing: true }
+    if (raw.includes('auth/invalid-email')) return { msg: 'Email invalide.', existing: false }
+    if (raw.includes('auth/weak-password')) return { msg: 'Mot de passe trop court (6 caractères minimum).', existing: false }
+    if (raw.includes('auth/wrong-password') || raw.includes('auth/invalid-credential')) return { msg: 'Mot de passe incorrect.', existing: true }
+    if (raw.includes('auth/network-request-failed')) return { msg: 'Pas de connexion internet.', existing: false }
+    return { msg: 'Impossible de créer le compte pour le moment.', existing: false }
+  }
+
   const submit = async () => {
-    setBusy(true); setErr('')
+    setBusy(true); setErr(''); setExisting(false)
     try {
       const profile = await signup({
         prenom: form.prenom,
@@ -47,7 +58,22 @@ export default function Bienvenue() {
       setUser(profile)
       router.push('/dashboard')
     } catch (e: unknown) {
-      setErr(e instanceof Error ? e.message : 'Impossible de créer le compte')
+      const h = humanize(e)
+      setErr(h.msg); setExisting(h.existing)
+    } finally {
+      setBusy(false)
+    }
+  }
+
+  const tryLogin = async () => {
+    setBusy(true); setErr('')
+    try {
+      const profile = await login(form.email, form.password)
+      setUser(profile)
+      router.push('/dashboard')
+    } catch (e: unknown) {
+      const h = humanize(e)
+      setErr(h.msg)
     } finally {
       setBusy(false)
     }
@@ -119,7 +145,16 @@ export default function Bienvenue() {
               <input className="ob-input" type="email" placeholder="Votre email" value={form.email} onChange={e => patch({ email: e.target.value })} required />
               <input className="ob-input" type="password" placeholder="Un mot de passe" value={form.password} onChange={e => patch({ password: e.target.value })} minLength={6} required />
               {err && <div className="ob-err">{err}</div>}
-              <button type="submit" className="ob-btn" disabled={busy}>{busy ? 'Création…' : 'Entrer dans Reboot BJ →'}</button>
+              {existing ? (
+                <>
+                  <button type="button" className="ob-btn" onClick={tryLogin} disabled={busy}>
+                    {busy ? 'Connexion…' : 'Se connecter avec ce mot de passe →'}
+                  </button>
+                  <div className="ob-hint">Tu as déjà un compte — entre ton mot de passe pour te reconnecter.</div>
+                </>
+              ) : (
+                <button type="submit" className="ob-btn" disabled={busy}>{busy ? 'Création…' : 'Entrer dans Reboot BJ →'}</button>
+              )}
             </form>
             <button className="ob-back" onClick={prev}>← Retour</button>
           </div>
