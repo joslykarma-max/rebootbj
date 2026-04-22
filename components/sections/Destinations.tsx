@@ -14,6 +14,7 @@ type Props = { onLock: (name: string) => void }
 export default function Destinations({ onLock }: Props) {
   return (
     <section className="section destinations" id="destinations">
+      <div className="ornament-slot ornament-tl" data-hint="ex: motif tissé kente" />
       <div className="dest-intro reveal">
         <div>
           <div className="s-eyebrow">Destinations</div>

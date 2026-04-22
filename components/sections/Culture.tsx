@@ -34,6 +34,7 @@ export default function Culture() {
 
   return (
     <section className="section culture" id="culture">
+      <div className="ornament-slot ornament-br dark" data-hint="ex: sculpture vodoun" />
       <div className="reveal">
         <div className="s-eyebrow">Culture</div>
         <h2 className="s-title">Une culture qui a<br /><em>changé le monde.</em></h2>

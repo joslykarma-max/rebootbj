@@ -12,8 +12,8 @@ const EXPS = [
 export default function VRSection({ onLock }: Props) {
   return (
     <section className="vr-section" id="vr">
-      <div className="vr-ring" />
-      <div className="vr-ring" />
+      <div className="ornament-slot ornament-bl dark" data-hint="ex: casque VR stylisé" />
+      <div className="ornament-slot ornament-tr dark" data-hint="ex: motif 360°" />
       <div className="vr-inner reveal">
         <div className="vr-badge">Nouveau · Tourisme Virtuel 360°</div>
         <h2 className="vr-title">

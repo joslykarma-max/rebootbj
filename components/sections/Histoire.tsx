@@ -28,6 +28,7 @@ type Props = { onLock: (name: string) => void }
 export default function Histoire({ onLock }: Props) {
   return (
     <section className="section histoire" id="histoire">
+      <div className="ornament-slot ornament-tr" data-hint="ex: masque royal PNG" />
       <div className="reveal">
         <div className="s-eyebrow">Histoire</div>
         <h2 className="s-title">Un royaume qui a fait<br /><em>trembler les empires.</em></h2>
