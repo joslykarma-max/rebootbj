@@ -2,6 +2,7 @@
 // Store Zustand — état global de navigation, destination, curseur
 
 import { create } from 'zustand'
+import type { UserProfile } from '@/lib/auth'
 
 type CursorMode = 'default' | 'poi' | 'btn'
 
@@ -19,6 +20,10 @@ interface RebootStore {
   cursorMode: CursorMode
   cursorLabel: string
 
+  // Auth
+  user: UserProfile | null
+  authReady: boolean
+
   // Actions
   setLayer: (n: 0 | 1 | 2) => void
   setAnimating: (v: boolean) => void
@@ -27,6 +32,9 @@ interface RebootStore {
   openDest: (id: string) => void
   closeDest: () => void
   setCursorMode: (mode: CursorMode, label?: string) => void
+  setUser: (u: UserProfile | null) => void
+  patchUser: (p: Partial<UserProfile>) => void
+  setAuthReady: (v: boolean) => void
 }
 
 export const useStore = create<RebootStore>((set) => ({
@@ -40,6 +48,9 @@ export const useStore = create<RebootStore>((set) => ({
   cursorMode: 'default',
   cursorLabel: '',
 
+  user: null,
+  authReady: false,
+
   setLayer: (n) => set({ layer: n, scrollAcc: 0 }),
   setAnimating: (v) => set({ animating: v }),
   addScroll: (delta) => set((s) => ({ scrollAcc: s.scrollAcc + delta })),
@@ -49,4 +60,8 @@ export const useStore = create<RebootStore>((set) => ({
   closeDest: () => set({ activeDest: null, panelOpen: false }),
 
   setCursorMode: (mode, label = '') => set({ cursorMode: mode, cursorLabel: label }),
+
+  setUser: (u) => set({ user: u }),
+  patchUser: (p) => set((s) => ({ user: s.user ? { ...s.user, ...p } : s.user })),
+  setAuthReady: (v) => set({ authReady: v }),
 }))
