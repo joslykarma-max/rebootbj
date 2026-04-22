@@ -10,11 +10,13 @@ import VRSection from '@/components/sections/VRSection'
 import Footer from '@/components/sections/Footer'
 import AuthModal from '@/components/modals/AuthModal'
 import LockedModal from '@/components/modals/LockedModal'
+import { useStore } from '@/store/useStore'
 
 export default function Home() {
   const [authOpen, setAuthOpen] = useState(false)
   const [lockedOpen, setLockedOpen] = useState(false)
   const [lockedTitle, setLockedTitle] = useState('')
+  const user = useStore(s => s.user)
 
   const progressRef = useRef<HTMLDivElement>(null)
 
@@ -38,7 +40,10 @@ export default function Home() {
     return () => obs.disconnect()
   }, [])
 
-  const openLock = (name: string) => { setLockedTitle(name); setLockedOpen(true) }
+  const openLock = (name: string) => {
+    if (user) return // contenu déverrouillé pour les connectés
+    setLockedTitle(name); setLockedOpen(true)
+  }
   const closeLockOpenAuth = () => { setLockedOpen(false); setTimeout(() => setAuthOpen(true), 200) }
 
   return (

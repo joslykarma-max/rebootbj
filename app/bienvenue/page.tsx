@@ -58,7 +58,7 @@ export default function Bienvenue() {
         interet: form.interet,
       })
       setUser(profile)
-      router.push('/dashboard')
+      router.push('/')
     } catch (e: unknown) {
       const h = humanize(e)
       setErr(h.msg); setExisting(h.existing)
@@ -86,7 +86,7 @@ export default function Bienvenue() {
     try {
       const profile = await login(form.email, form.password)
       setUser(profile)
-      router.push('/dashboard')
+      router.push('/')
     } catch (e: unknown) {
       const h = humanize(e)
       setErr(h.msg)

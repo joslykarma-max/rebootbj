@@ -6,14 +6,19 @@ export default function Hero() {
   const router = useRouter()
   const user = useStore(s => s.user)
   const scrollDown = () => document.getElementById('histoire')?.scrollIntoView({ behavior: 'smooth' })
-  const primary = () => router.push(user ? '/dashboard' : '/bienvenue')
+  const primary = () => {
+    if (user) scrollDown()
+    else router.push('/bienvenue')
+  }
 
   return (
     <section className="hero" id="hero">
       <div className="hero-bg" />
       <div className="hero-vignette" />
       <div className="hero-content">
-        <div className="hero-eyebrow">Reboot BJ · Cotonou</div>
+        <div className="hero-eyebrow">
+          {user ? `Bonjour ${user.prenom} · ravi de vous revoir` : 'Reboot BJ · Cotonou'}
+        </div>
         <h1 className="hero-title">
           Vivez le <em>Bénin.</em>
         </h1>
@@ -23,10 +28,10 @@ export default function Hero() {
         </p>
         <div className="hero-actions">
           <button className="btn-hero" onClick={primary}>
-            {user ? `Bonjour ${user.prenom} →` : 'On fait connaissance ?'}
+            {user ? 'Reprendre l’exploration' : 'On fait connaissance ?'}
           </button>
-          <button className="btn-gh" onClick={scrollDown}>
-            Découvrir <span>→</span>
+          <button className="btn-gh" onClick={() => router.push(user ? '/dashboard' : '/bienvenue')}>
+            {user ? 'Mon espace' : 'Découvrir'} <span>→</span>
           </button>
         </div>
       </div>
