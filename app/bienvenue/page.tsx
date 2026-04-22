@@ -30,6 +30,7 @@ export default function Bienvenue() {
   const [err, setErr] = useState('')
   const [existing, setExisting] = useState(false)
   const [resetSent, setResetSent] = useState(false)
+  const [mode, setMode] = useState<'new' | 'returning'>('new')
 
   const next = () => setStep(s => s + 1)
   const prev = () => setStep(s => Math.max(0, s - 1))
@@ -98,17 +99,40 @@ export default function Bienvenue() {
     <main className="ob-shell" style={{ backgroundImage: `url(${BG[step]})` }}>
       <div className="ob-veil" />
       <a href="/" className="ob-logo"><img src="/logo.png" alt="Reboot BJ" /></a>
-      <div className="ob-dots">
-        {[0, 1, 2, 3, 4].map(i => <span key={i} className={`ob-dot${i === step ? ' on' : i < step ? ' done' : ''}`} />)}
-      </div>
+      {mode === 'new' && (
+        <div className="ob-dots">
+          {[0, 1, 2, 3, 4].map(i => <span key={i} className={`ob-dot${i === step ? ' on' : i < step ? ' done' : ''}`} />)}
+        </div>
+      )}
 
       <div className="ob-stage">
-        {step === 0 && (
+        {step === 0 && mode === 'new' && (
           <div className="ob-card">
             <div className="ob-eyebrow">Reboot BJ</div>
             <h1 className="ob-h1">Bonjour.<br/>Bienvenue.</h1>
             <p className="ob-lead">Avant de vous ouvrir le Bénin, <em>on fait connaissance ?</em></p>
             <button className="ob-btn" onClick={next}>Commencer</button>
+            <button className="ob-link" onClick={() => { setMode('returning'); setErr(''); setResetSent(false) }}>
+              Je suis déjà un ami — me reconnecter
+            </button>
+          </div>
+        )}
+
+        {mode === 'returning' && (
+          <div className="ob-card">
+            <div className="ob-eyebrow">Reboot BJ · Reconnexion</div>
+            <h2 className="ob-h2">Content de vous revoir.</h2>
+            <form onSubmit={e => { e.preventDefault(); tryLogin() }} className="ob-form">
+              <input className="ob-input" type="email" placeholder="Votre email" value={form.email} onChange={e => patch({ email: e.target.value })} required autoFocus />
+              <input className="ob-input" type="password" placeholder="Votre mot de passe" value={form.password} onChange={e => patch({ password: e.target.value })} required />
+              {err && <div className="ob-err">{err}</div>}
+              {resetSent && <div className="ob-hint" style={{ color: 'var(--o)' }}>Email envoyé. Vérifie ta boîte (et les spams).</div>}
+              <button type="submit" className="ob-btn" disabled={busy}>{busy ? 'Connexion…' : 'Se connecter →'}</button>
+              <button type="button" className="ob-link" onClick={forgotPassword} disabled={busy}>
+                Mot de passe oublié ?
+              </button>
+            </form>
+            <button className="ob-back" onClick={() => { setMode('new'); setErr(''); setResetSent(false) }}>← Revenir à l&apos;accueil</button>
           </div>
         )}
 

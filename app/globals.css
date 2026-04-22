@@ -910,6 +910,16 @@ select.fi option { background: var(--light); }
   transition: color .2s;
 }
 .ob-back:hover { color: var(--light); }
+.ob-link {
+  background: transparent; border: 0;
+  color: rgba(245,240,232,.65);
+  font-family: var(--font-dm);
+  font-size: 13px; cursor: pointer; margin-top: 4px;
+  text-decoration: underline; text-underline-offset: 4px;
+  transition: color .2s;
+}
+.ob-link:hover { color: var(--o); }
+.ob-link:disabled { opacity: .5; cursor: not-allowed; }
 .ob-err { color: #ff8a8a; font-size: 13px; font-family: var(--font-dm); text-align: center; }
 .ob-hint { font-size: 12px; color: rgba(245,240,232,.5); margin-top: 8px; font-family: var(--font-dm); text-align: center; line-height: 1.5; }
 
