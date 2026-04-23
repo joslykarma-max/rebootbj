@@ -46,7 +46,7 @@ export default function AuthModal({ open, onClose }: Props) {
       setUser(profile)
       setSuccess(true)
       setTimeout(() => {
-        setSuccess(false); onClose(); router.push('/')
+        setSuccess(false); onClose(); router.push('/espace')
       }, 1800)
     } catch (e: unknown) {
       setErr(e instanceof Error ? e.message : 'Erreur inscription')
@@ -66,7 +66,7 @@ export default function AuthModal({ open, onClose }: Props) {
       )
       setUser(profile)
       onClose()
-      router.push('/')
+      router.push('/espace')
     } catch (e: unknown) {
       setErr(e instanceof Error ? e.message : 'Email ou mot de passe incorrect')
     } finally {

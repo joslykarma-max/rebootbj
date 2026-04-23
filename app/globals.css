@@ -928,3 +928,117 @@ select.fi option { background: var(--light); }
   .ob-h1 { font-size: 52px; }
   .ob-h2 { font-size: 34px; }
 }
+
+/* ── ESPACE — portail 2×4 non-défilable ── */
+.esp-shell {
+  height: 100vh; width: 100vw; overflow: hidden;
+  background: var(--dark); color: var(--light);
+  display: flex; flex-direction: column;
+  padding: 24px 32px 32px;
+}
+.esp-loading {
+  height: 100vh; display: grid; place-items: center;
+  background: var(--dark); color: var(--muted);
+  font-family: var(--font-dm); letter-spacing: 4px;
+}
+.esp-head {
+  display: flex; justify-content: space-between; align-items: center;
+  padding-bottom: 20px;
+}
+.esp-logo { display: block; line-height: 0; }
+.esp-logo img { height: 30px; filter: invert(1) brightness(1.1); }
+.esp-user { display: flex; align-items: center; gap: 20px; }
+.esp-greet {
+  font-family: var(--font-cormorant);
+  font-size: 18px; font-weight: 300;
+  color: rgba(245,240,232,.7);
+}
+.esp-greet em { color: var(--o); font-style: italic; font-weight: 400; }
+.esp-logout {
+  background: transparent; border: 1px solid rgba(245,240,232,.15);
+  color: rgba(245,240,232,.55); padding: 8px 16px;
+  font-family: var(--font-dm); font-size: 10px; letter-spacing: 2px;
+  text-transform: uppercase; cursor: pointer;
+  transition: all .2s;
+}
+.esp-logout:hover { color: var(--light); border-color: rgba(245,240,232,.35); }
+.esp-grid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 12px;
+  min-height: 0;
+}
+.esp-tile {
+  position: relative; overflow: hidden;
+  background: var(--mid); border: 0; cursor: pointer;
+  padding: 0; transition: transform .35s;
+  min-height: 0;
+}
+.esp-tile:hover:not(.disabled) { transform: translateY(-3px); }
+.esp-tile.disabled { cursor: not-allowed; }
+.esp-tile-img {
+  position: absolute; inset: 0;
+  background-size: cover; background-position: center;
+  filter: grayscale(.7) brightness(.55);
+  transition: filter .5s, transform .6s;
+}
+.esp-tile:hover:not(.disabled) .esp-tile-img {
+  filter: grayscale(0) brightness(.75); transform: scale(1.06);
+}
+.esp-tile.disabled .esp-tile-img { filter: grayscale(1) brightness(.35); }
+.esp-tile-veil {
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(10,10,10,.85) 0%, rgba(10,10,10,.55) 55%, rgba(10,10,10,.3) 100%);
+  transition: background .4s;
+}
+.esp-tile:hover:not(.disabled) .esp-tile-veil {
+  background: linear-gradient(135deg, rgba(10,10,10,.9) 0%, rgba(10,10,10,.55) 55%, rgba(10,10,10,.15) 100%);
+}
+.esp-tile-content {
+  position: absolute; inset: 0;
+  padding: 28px;
+  display: flex; flex-direction: column; justify-content: flex-end;
+  text-align: left;
+}
+.esp-tile-sub {
+  font-family: var(--font-dm);
+  font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--o); margin-bottom: 10px;
+  transition: color .3s;
+}
+.esp-tile-title {
+  font-family: var(--font-cormorant);
+  font-size: clamp(32px, 3vw, 48px);
+  font-weight: 300; line-height: 1;
+  color: var(--light); letter-spacing: -1px;
+  margin-bottom: 12px;
+}
+.esp-tile-desc {
+  font-family: var(--font-cormorant);
+  font-size: 14px; line-height: 1.5; font-weight: 300;
+  color: rgba(245,240,232,.7);
+  font-style: italic;
+  max-height: 0; overflow: hidden; opacity: 0;
+  transition: max-height .4s ease, opacity .3s;
+}
+.esp-tile:hover:not(.disabled) .esp-tile-desc {
+  max-height: 80px; opacity: 1;
+}
+.esp-tile-soon {
+  position: absolute; top: 20px; right: 20px;
+  font-family: var(--font-dm);
+  font-size: 9px; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--o); border: 1px solid var(--o);
+  padding: 4px 10px;
+}
+
+@media (max-width: 1100px) {
+  .esp-grid { grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(4, 1fr); }
+}
+@media (max-width: 600px) {
+  .esp-shell { height: auto; min-height: 100vh; overflow: auto; }
+  .esp-grid { grid-template-columns: 1fr; grid-template-rows: repeat(8, 180px); }
+  .esp-head { flex-direction: column; gap: 12px; align-items: flex-start; }
+}

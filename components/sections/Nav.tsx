@@ -25,7 +25,7 @@ export default function Nav() {
         <li><a href="#destinations" onClick={e => { e.preventDefault(); scroll('destinations') }}>Destinations</a></li>
       </ul>
       {user
-        ? <a className="nav-cta" href="/dashboard">Mon espace</a>
+        ? <a className="nav-cta" href="/espace">Mon espace</a>
         : <a className="nav-cta" href="/bienvenue">On fait connaissance ?</a>}
     </nav>
   )
