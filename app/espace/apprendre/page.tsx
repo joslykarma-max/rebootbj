@@ -47,6 +47,7 @@ export default function Apprendre() {
       title={<>Le Bénin comme <em>salle de classe vivante.</em></>}
       lead="Quiz, faits culturels, langue Fon, chronologie royale. Pour les curieux, les étudiants, les Béninois qui veulent redécouvrir leur pays."
       heroImg="https://images.unsplash.com/photo-1504432842672-1a79f78e4084?w=1920&auto=format&fit=crop&q=80"
+      theme="apprendre"
     >
       <div className="ep-tabs">
         <button className={`ep-tab${tab === 'faits' ? ' on' : ''}`} onClick={() => setTab('faits')}>Faits clés</button>

@@ -8,10 +8,11 @@ type Props = {
   title: React.ReactNode
   lead?: string
   heroImg?: string
+  theme?: string
   children: React.ReactNode
 }
 
-export default function EspaceLayout({ eyebrow, title, lead, heroImg, children }: Props) {
+export default function EspaceLayout({ eyebrow, title, lead, heroImg, theme, children }: Props) {
   const router = useRouter()
   const user = useStore(s => s.user)
   const authReady = useStore(s => s.authReady)
@@ -25,7 +26,7 @@ export default function EspaceLayout({ eyebrow, title, lead, heroImg, children }
   }
 
   return (
-    <main className="ep-shell">
+    <main className="ep-shell" {...(theme ? { 'data-theme': theme } : {})}>
       <header className="ep-head">
         <a href="/espace" className="ep-back" aria-label="Retour au portail">
           <span>←</span> Mon espace

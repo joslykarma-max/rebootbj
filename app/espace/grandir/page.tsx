@@ -17,6 +17,7 @@ export default function Grandir() {
       title={<>Le Bénin transmis à la <em>prochaine génération.</em></>}
       lead="Un espace pour que les enfants rencontrent leur pays, son histoire, ses langues. À venir au printemps 2026."
       heroImg="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=1920&auto=format&fit=crop&q=80"
+      theme="grandir"
     >
       <div className="ep-soon-banner">
         <div className="ep-soon-label">Bientôt disponible</div>

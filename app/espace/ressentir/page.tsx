@@ -43,6 +43,7 @@ export default function Ressentir() {
       title={<>Une culture qui a <em>changé le monde.</em></>}
       lead="Vodoun, musique, gastronomie, artisanat : quatre portes pour rentrer dans l'âme béninoise."
       heroImg="https://images.unsplash.com/photo-1561361513-2d000a50f0dc?w=1920&auto=format&fit=crop&q=80"
+      theme="ressentir"
     >
       <div className="ep-tabs">
         {PANELS.map(x => (

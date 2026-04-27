@@ -39,6 +39,7 @@ export default function Decouvrir() {
       title={<>Un royaume qui a fait <em>trembler les empires.</em></>}
       lead="Mille trois cents ans d'histoire condensés dans quatre moments qui changent tout."
       heroImg="https://images.unsplash.com/photo-1533234427049-9e9bb093186d?w=1920&auto=format&fit=crop&q=80"
+      theme="decouvrir"
     >
       <div className="ep-timeline">
         {ERAS.map((e, i) => (

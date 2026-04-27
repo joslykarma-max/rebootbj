@@ -10,8 +10,9 @@ export default function Vivre() {
     <EspaceLayout
       eyebrow="Vivre · Réservation & VR"
       title={<>Deux façons de <em>passer à l’acte.</em></>}
-      lead="Planifiez votre voyage avec notre IA, ou immergez-vous d'abord en 360° depuis votre salon."
+      lead="Planifiez votre voyage avec notre IA, ou immergez-vous d’abord en 360° depuis votre salon."
       heroImg="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1920&auto=format&fit=crop&q=80"
+      theme="vivre"
     >
       <div className="ep-tabs">
         <button className={`ep-tab${tab === 'plan' ? ' on' : ''}`} onClick={() => setTab('plan')}>Planifier mon voyage</button>

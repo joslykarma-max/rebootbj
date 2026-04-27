@@ -19,6 +19,7 @@ export default function Explorer() {
       title={<>Sept joyaux qui <em>attendent d’être vécus.</em></>}
       lead="Chaque destination a son caractère. Choisissez celle qui vous appelle."
       heroImg="https://images.unsplash.com/photo-1516426122078-c23e76319801?w=1920&auto=format&fit=crop&q=80"
+      theme="explorer"
     >
       <div className="ep-dest-grid">
         {DESTINATIONS.map(d => (
