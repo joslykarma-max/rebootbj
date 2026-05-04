@@ -19,7 +19,7 @@ const ITEMS = [
   {
     era: 'XXI', period: "Aujourd'hui", name: 'Le Bénin se réveille',
     desc: "Le Bénin moderne est en plein renouveau culturel. Cotonou s'impose comme une capitale créative africaine. L'art béninois conquiert les musées du monde. Et Reboot BJ vous y emmène.",
-    img: '/images/carte-benin.webp', bgPos: 'center center',
+    img: '/images/benin.png', bgPos: 'center center',
   },
 ]
 
