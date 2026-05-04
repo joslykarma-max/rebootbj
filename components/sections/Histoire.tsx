@@ -19,7 +19,7 @@ const ITEMS = [
   {
     era: 'XXI', period: "Aujourd'hui", name: 'Le Bénin se réveille',
     desc: "Le Bénin moderne est en plein renouveau culturel. Cotonou s'impose comme une capitale créative africaine. L'art béninois conquiert les musées du monde. Et Reboot BJ vous y emmène.",
-    img: '/images/benin.png', bgPos: 'center center',
+    img: '/images/benin.png', bgPos: 'center center', bgSize: 'contain',
   },
 ]
 
@@ -36,7 +36,7 @@ export default function Histoire({ onLock }: Props) {
       <div className="hist-grid reveal d1">
         {ITEMS.map(item => (
           <div key={item.name} className="hist-item" onClick={() => onLock(item.name)}>
-            <div className="hist-img" style={{ backgroundImage: `url(${item.img})`, backgroundPosition: item.bgPos }} />
+            <div className="hist-img" style={{ backgroundImage: `url(${item.img})`, backgroundPosition: item.bgPos, backgroundSize: item.bgSize ?? 'cover' }} />
             <div className="hist-body">
               <div className="hist-era">{item.era}</div>
               <div className="hist-period">{item.period}</div>
