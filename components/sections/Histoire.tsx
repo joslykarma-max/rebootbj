@@ -4,22 +4,22 @@ const ITEMS = [
   {
     era: 'VII', period: 'VIIe siècle', name: 'Les origines du Dahomey',
     desc: "Fondé par le peuple Fon, le Royaume du Dahomey émerge dans la région d'Abomey. Une civilisation sophistiquée s'organise autour de palais royaux et d'un système politique unique en Afrique subsaharienne.",
-    img: 'https://images.unsplash.com/photo-1533234427049-9e9bb093186d?w=700&auto=format&fit=crop&q=70',
+    img: '/images/roi-dahomey.png',
   },
   {
     era: 'XVI', period: 'XVIe – XVIIIe siècle', name: "L'âge d'or du Royaume",
     desc: "Sous les rois Houégbadja, Agadja et Tegbeossu, le Dahomey devient une puissance régionale. Les palais d'Abomey, classés UNESCO, témoignent de la grandeur de cette civilisation.",
-    img: 'https://images.unsplash.com/photo-1580637250481-b78db3e6f84b?w=700&auto=format&fit=crop&q=70',
+    img: '/images/Gemini_Generated_Image_ft0r8mft0r8mft0r.png',
   },
   {
     era: 'XIX', period: 'XIXe siècle', name: 'Les Amazones — Agojie',
     desc: "L'armée de guerrières d'élite du roi Béhanzin — les Agojie — devient légendaire. Redoutées même par les soldats français, elles inspirent encore le monde entier deux siècles plus tard.",
-    img: 'https://images.unsplash.com/photo-1604598692017-9e9f49d0bcea?w=700&auto=format&fit=crop&q=70',
+    img: '/images/Gemini_Generated_Image_nvasw6nvasw6nvas.png',
   },
   {
     era: 'XXI', period: "Aujourd'hui", name: 'Le Bénin se réveille',
     desc: "Le Bénin moderne est en plein renouveau culturel. Cotonou s'impose comme une capitale créative africaine. L'art béninois conquiert les musées du monde. Et Reboot BJ vous y emmène.",
-    img: 'https://images.unsplash.com/photo-1577185906981-5a60da3fbaa3?w=700&auto=format&fit=crop&q=70',
+    img: '/images/carte-benin.webp',
   },
 ]
 
