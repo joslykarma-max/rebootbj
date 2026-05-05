@@ -109,11 +109,72 @@ const PANELS: Panel[] = [
   {
     id: 'gastro',
     label: 'Gastronomie',
-    title: 'Saveurs qui racontent',
+    title: 'La gastronomie béninoise — Cuisine de terroir et de saison',
     img: '/Destinations/Vivez-grand-popo/trip-grand-popo-1.jpg',
     imgPos: 'center center',
-    body: "La cuisine béninoise est un voyage en soi. Amiwo, akassa, djenkoumé, gboma dessi — chaque plat raconte une région, une saison, une cérémonie. Le poisson braisé de Grand-Popo, le wagasi (fromage peul) du Nord, le tchoukoutou (bière de mil) de Natitingou, le sodabi distillé à partir de palme. Les marchés de Cotonou sont une expérience sensorielle totale : Dantokpa, le plus grand marché d'Afrique de l'Ouest à ciel ouvert, déborde de couleurs, d'odeurs et de vie.",
-    facts: [['40+', 'Plats traditionnels'], ['Dantokpa', 'Plus grand marché AOF'], ['Sodabi', 'Spiritueux national']],
+    facts: [
+      ['35+', 'Plats et préparations recensés'],
+      ['Dantokpa', 'Plus grand marché à ciel ouvert d\'AOF'],
+      ['Bohicon', 'Ville créative UNESCO — gastronomie'],
+      ['Afitin', 'Condiment patrimonial de Bohicon'],
+    ],
+    sections: [
+      {
+        title: 'Vue d\'ensemble',
+        content: "La cuisine béninoise est une cuisine de terroir, de saison et de contraste. Elle repose sur quelques grandes bases : le maïs, l'igname, le manioc, le haricot, le riz, le poisson, les viandes grillées, les feuilles potagères, le piment et les condiments fermentés. Selon les zones, on sent davantage l'influence des produits de la côte, des tubercules du centre, ou des préparations plus rustiques et nourrissantes du Nord.\n\nBohicon a été mise en avant pour sa créativité gastronomique dans le Réseau des villes créatives de l'UNESCO. Les documents de ce réseau citent spécialement l'afitin, le houawélio et le bômiho comme signatures locales — preuve que la gastronomie béninoise comprend tout un patrimoine de préparations locales, de techniques de fermentation et de recettes familiales transmises de génération en génération.",
+      },
+      {
+        title: 'Les grands plats',
+        content: (
+          <div className="rs-divs">
+            <div className="rs-div"><strong>Akassa</strong> — Pâte de maïs fermentée, souple et légèrement acidulée, servie avec une sauce pimentée ou une sauce au poisson. Grand classique de la table béninoise.</div>
+            <div className="rs-div"><strong>Amiwo</strong> — Pâte de maïs rouge cuite avec tomate, huile et épices. Dense, colorée et très populaire dans tout le pays.</div>
+            <div className="rs-div"><strong>Wassa-wassa</strong> — Semoule d'igname râpée, cuite à la vapeur. Texture légère et granuleuse, très appréciée avec sauce, viande ou poisson.</div>
+            <div className="rs-div"><strong>Toubani</strong> — Préparation à base de farine de haricot local, relevée au piment et à l'huile. Nourrissant, simple, fortement ancré dans la cuisine populaire.</div>
+            <div className="rs-div"><strong>Igname pilée</strong> — Purée ou pâte d'igname à texture élastique, mangée avec une sauce. L'un des plats les plus respectés dans beaucoup de familles.</div>
+            <div className="rs-div"><strong>Télibo</strong> — Spécialité béninoise bien enracinée dans les habitudes locales, avec des variantes selon les régions et les foyers.</div>
+            <div className="rs-div"><strong>Bômiho</strong> — Mets identitaire de Bohicon, mis en avant dans les dossiers sur le patrimoine gastronomique béninois. À chercher directement sur place.</div>
+            <div className="rs-div"><strong>Houawélio</strong> — Pâte de maïs fermentée spéciale, préparation patrimoniale transmise de génération en génération dans la région de Bohicon.</div>
+          </div>
+        ),
+      },
+      {
+        title: 'Sauces et plats du quotidien',
+        content: (
+          <div className="rs-divs">
+            <div className="rs-div"><strong>Sauce Moyo</strong> — Sauce tomate avec oignon, poivron et assaisonnement, servie avec du poisson frit. Vive, parfumée et facile à marier avec plusieurs bases.</div>
+            <div className="rs-div"><strong>Sauce Gboman</strong> — Sauce épaisse à base de feuilles vertes. Accompagne la pâte, le poisson fumé ou le wagassi frit.</div>
+            <div className="rs-div"><strong>Riz sauce tomate au poisson frit</strong> — Formule très répandue dans les menus populaires : du riz, une sauce tomate relevée, et un poisson frit croustillant.</div>
+            <div className="rs-div"><strong>Haricot</strong> — Pilier de l'alimentation quotidienne. Seul en sauce, mélangé à d'autres bases, ou servi avec gari ou piment.</div>
+            <div className="rs-div"><strong>Gari + haricot</strong> — Association populaire, économique et nourrissante. Le gari apporte le croquant, le haricot la densité.</div>
+            <div className="rs-div"><strong>Poulet grillé</strong> — Très présent dans les villes et sur les axes routiers, bien pimenté et servi avec frites, aloko ou igname.</div>
+            <div className="rs-div"><strong>Wagassi frit</strong> — Fromage peul frit, signature gourmande importante dans plusieurs assiettes béninoises.</div>
+            <div className="rs-div"><strong>Crevettes d'eau douce fumées</strong> — Utilisées comme mets ou comme élément d'assaisonnement dans plusieurs sauces.</div>
+          </div>
+        ),
+      },
+      {
+        title: 'Street food — Fritures et beignets',
+        content: "Une grande partie du charme culinaire béninois se joue dans les rues, les marchés, les gares routières et les abords des écoles. On y trouve beaucoup de fritures, de beignets et de collations qui font partie de l'identité quotidienne du pays.",
+      },
+      {
+        title: '',
+        content: (
+          <div className="rs-divs">
+            <div className="rs-div"><strong>Yovo doko</strong> — Petits beignets sucrés, moelleux et dorés. Très fréquents au petit-déjeuner ou au goûter.</div>
+            <div className="rs-div"><strong>Ata</strong> — Beignet de haricots blancs. Collation nourrissante très présente dans les habitudes béninoises.</div>
+            <div className="rs-div"><strong>Aloko</strong> — Bananes plantain frites. Servent à la fois de goûter, d'accompagnement et de petit repas rapide.</div>
+            <div className="rs-div"><strong>Talé talé</strong> — Beignets à base de bananes mûres et de farine. Plus sucré qu'un aloko, c'est une gourmandise de rue très aimée.</div>
+            <div className="rs-div"><strong>Tévi</strong> — Ignames tranchées puis frites. L'un des en-cas salés les plus populaires.</div>
+            <div className="rs-div"><strong>Wɛli</strong> — Patates douces frites, croustillantes dehors et tendres dedans. Simple et très populaire.</div>
+          </div>
+        ),
+      },
+      {
+        title: 'Condiments et fermentations',
+        content: "La gastronomie béninoise tient aussi dans ses condiments, ses fermentations et ses produits d'assaisonnement. L'afitin est un condiment traditionnel mis en avant à Bohicon, présenté comme un assaisonnement local essentiel pour les sauces béninoises. Le piment n'est pas un détail : c'est un marqueur fort du goût local, omniprésent sous différentes formes — frais, séché, en sauce, en condiment au poisson.\n\nLes produits fumés ou séchés — poisson, crevettes, condiments fermentés — structurent une grande part de la saveur béninoise. C'est souvent la sauce, et non la base, qui \"fait\" vraiment le plat.",
+      },
+    ],
   },
   {
     id: 'artisan',
