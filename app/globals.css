@@ -1251,6 +1251,65 @@ select.fi option { background: var(--light); }
 }
 .ep-body { padding: 80px 80px 120px; max-width: 1280px; margin: 0 auto; }
 
+/* Toolbar filtres + vue */
+.dec-toolbar {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 16px; margin-bottom: 12px; flex-wrap: wrap;
+}
+.dec-filters { display: flex; gap: 8px; flex-wrap: wrap; flex: 1; }
+.dec-filter-btn {
+  font-family: var(--font-dm); font-size: 10px; letter-spacing: 2px;
+  text-transform: uppercase; padding: 7px 14px;
+  border: 1px solid rgba(255,255,255,.12); background: transparent;
+  color: var(--t-muted, #666); cursor: pointer; transition: all .2s;
+}
+.dec-filter-btn:hover { color: var(--t-text, #f0ede6); border-color: rgba(255,255,255,.3); }
+.dec-filter-btn.active {
+  background: var(--t-accent, #b8912e); border-color: var(--t-accent, #b8912e);
+  color: var(--t-bg, #0a0a0a);
+}
+.dec-view-toggle { display: flex; gap: 4px; flex-shrink: 0; }
+.dec-view-btn {
+  width: 36px; height: 36px; border: 1px solid rgba(255,255,255,.12);
+  background: transparent; color: var(--t-muted, #666); cursor: pointer;
+  display: flex; align-items: center; justify-content: center; transition: all .2s;
+}
+.dec-view-btn:hover { color: var(--t-text, #f0ede6); border-color: rgba(255,255,255,.3); }
+.dec-view-btn.active { background: var(--t-accent, #b8912e); border-color: var(--t-accent, #b8912e); color: var(--t-bg, #0a0a0a); }
+.dec-count {
+  font-family: var(--font-dm); font-size: 10px; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--t-muted, #555); margin-bottom: 28px;
+}
+
+/* Vue liste */
+.dec-list { display: flex; flex-direction: column; gap: 2px; }
+.dec-list-item {
+  display: grid; grid-template-columns: 120px 1fr auto;
+  align-items: center; gap: 24px; padding: 20px;
+  background: var(--t-card, #111); border: 1px solid rgba(255,255,255,.06);
+  text-align: left; cursor: pointer; transition: background .2s;
+}
+.dec-list-item:hover { background: rgba(255,255,255,.04); }
+.dec-list-img {
+  width: 120px; height: 80px; background-size: cover; background-position: center;
+  flex-shrink: 0;
+}
+.dec-list-body { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.dec-list-title {
+  font-family: var(--font-cormorant); font-size: 20px; font-weight: 300;
+  line-height: 1.2; color: var(--t-text, #f0ede6);
+}
+.dec-list-excerpt {
+  font-family: var(--font-dm); font-size: 12px; line-height: 1.6;
+  color: var(--t-sub, #888); font-weight: 300;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.dec-list-arrow {
+  font-size: 18px; color: var(--t-accent, #b8912e); flex-shrink: 0;
+  transition: transform .2s;
+}
+.dec-list-item:hover .dec-list-arrow { transform: translateX(4px); }
+
 /* Grille Découvrir — Articles */
 .dec-grid {
   display: grid;
@@ -1566,4 +1625,8 @@ select.fi option { background: var(--light); }
   .dec-grid { grid-template-columns: 1fr; }
   .dec-modal-backdrop { padding: 0; align-items: flex-end; }
   .dec-modal { max-width: 100%; }
+  .dec-list-item { grid-template-columns: 80px 1fr auto; gap: 14px; padding: 14px; }
+  .dec-list-img { width: 80px; height: 60px; }
+  .dec-list-title { font-size: 16px; }
+  .dec-list-excerpt { display: none; }
 }

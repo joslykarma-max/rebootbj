@@ -532,8 +532,14 @@ const ARTICLES: Article[] = [
   },
 ]
 
+const TAGS = ['Tous', ...Array.from(new Set(ARTICLES.map(a => a.tag)))]
+
 export default function Decouvrir() {
   const [open, setOpen] = useState<Article | null>(null)
+  const [filter, setFilter] = useState('Tous')
+  const [view, setView] = useState<'grid' | 'list'>('grid')
+
+  const visible = filter === 'Tous' ? ARTICLES : ARTICLES.filter(a => a.tag === filter)
 
   return (
     <EspaceLayout
@@ -543,23 +549,87 @@ export default function Decouvrir() {
       heroImg="/Destinations/activite-abomey.jpg"
       theme="decouvrir"
     >
-      <div className="dec-grid">
-        {ARTICLES.map(a => (
-          <button key={a.id} className="dec-card" onClick={() => setOpen(a)}>
-            <div className="dec-card-img" style={{ backgroundImage: `url(${a.img})`, backgroundPosition: a.imgPos ?? 'center' }} />
-            <div className="dec-card-body">
-              <div className="dec-card-meta">
-                <span className="dec-tag">{a.tag}</span>
-                <span className="dec-read">{a.readTime} de lecture</span>
-              </div>
-              <div className="dec-card-title">{a.title}</div>
-              <div className="dec-card-excerpt">{a.excerpt}</div>
-              <div className="dec-card-cta">Lire l'article →</div>
-            </div>
+      {/* Toolbar */}
+      <div className="dec-toolbar">
+        <div className="dec-filters">
+          {TAGS.map(t => (
+            <button
+              key={t}
+              className={`dec-filter-btn${filter === t ? ' active' : ''}`}
+              onClick={() => setFilter(t)}
+            >
+              {t}
+            </button>
+          ))}
+        </div>
+        <div className="dec-view-toggle">
+          <button
+            className={`dec-view-btn${view === 'grid' ? ' active' : ''}`}
+            onClick={() => setView('grid')}
+            aria-label="Vue grille"
+          >
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+              <rect x="0" y="0" width="7" height="7"/><rect x="9" y="0" width="7" height="7"/>
+              <rect x="0" y="9" width="7" height="7"/><rect x="9" y="9" width="7" height="7"/>
+            </svg>
           </button>
-        ))}
+          <button
+            className={`dec-view-btn${view === 'list' ? ' active' : ''}`}
+            onClick={() => setView('list')}
+            aria-label="Vue liste"
+          >
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+              <rect x="0" y="1" width="16" height="2"/><rect x="0" y="7" width="16" height="2"/>
+              <rect x="0" y="13" width="16" height="2"/>
+            </svg>
+          </button>
+        </div>
       </div>
 
+      {/* Compteur */}
+      <div className="dec-count">{visible.length} article{visible.length > 1 ? 's' : ''}</div>
+
+      {/* Grille */}
+      {view === 'grid' && (
+        <div className="dec-grid">
+          {visible.map(a => (
+            <button key={a.id} className="dec-card" onClick={() => setOpen(a)}>
+              <div className="dec-card-img" style={{ backgroundImage: `url(${a.img})`, backgroundPosition: a.imgPos ?? 'center' }} />
+              <div className="dec-card-body">
+                <div className="dec-card-meta">
+                  <span className="dec-tag">{a.tag}</span>
+                  <span className="dec-read">{a.readTime} de lecture</span>
+                </div>
+                <div className="dec-card-title">{a.title}</div>
+                <div className="dec-card-excerpt">{a.excerpt}</div>
+                <div className="dec-card-cta">Lire l'article →</div>
+              </div>
+            </button>
+          ))}
+        </div>
+      )}
+
+      {/* Liste */}
+      {view === 'list' && (
+        <div className="dec-list">
+          {visible.map(a => (
+            <button key={a.id} className="dec-list-item" onClick={() => setOpen(a)}>
+              <div className="dec-list-img" style={{ backgroundImage: `url(${a.img})`, backgroundPosition: a.imgPos ?? 'center' }} />
+              <div className="dec-list-body">
+                <div className="dec-card-meta">
+                  <span className="dec-tag">{a.tag}</span>
+                  <span className="dec-read">{a.readTime} de lecture</span>
+                </div>
+                <div className="dec-list-title">{a.title}</div>
+                <div className="dec-list-excerpt">{a.excerpt}</div>
+              </div>
+              <div className="dec-list-arrow">→</div>
+            </button>
+          ))}
+        </div>
+      )}
+
+      {/* Modale */}
       {open && (
         <div className="dec-modal-backdrop" onClick={() => setOpen(null)}>
           <div className="dec-modal" onClick={e => e.stopPropagation()}>
