@@ -1340,15 +1340,15 @@ select.fi option { background: var(--light); }
 }
 .dec-read {
   font-family: var(--font-dm); font-size: 10px; letter-spacing: 1px;
-  text-transform: uppercase; color: var(--t-muted, #555);
+  text-transform: uppercase; color: rgba(240,237,230,.5);
 }
 .dec-card-title {
   font-family: var(--font-cormorant); font-size: 21px; font-weight: 400;
-  line-height: 1.15; color: var(--t-text, #f0ede6); letter-spacing: -.2px;
+  line-height: 1.15; color: #f0ede6; letter-spacing: -.2px;
 }
 .dec-card-excerpt {
   font-family: var(--font-dm); font-size: 12px; line-height: 1.65;
-  color: var(--t-sub, #888); font-weight: 300; flex: 1;
+  color: rgba(240,237,230,.7); font-weight: 300; flex: 1;
   display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;
   overflow: hidden;
 }
