@@ -31,7 +31,7 @@ export default function EspaceLayout({ eyebrow, title, lead, heroImg, theme, chi
         <a href="/espace" className="ep-back" aria-label="Retour au portail">
           <span>←</span> Mon espace
         </a>
-        <a href="/" className="ep-logo"><img src="/logo.png" alt="Reboot BJ" /></a>
+        <a href="/" className="ep-logo"><img src="/logo-transparent.png" alt="Reboot BJ" /></a>
         <div className="ep-user">{user.prenom}</div>
       </header>
 

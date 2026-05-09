@@ -98,7 +98,7 @@ export default function Espace() {
   return (
     <main className="esp-shell">
       <header className="esp-head">
-        <a href="/" className="esp-logo"><img src="/logo.png" alt="Reboot BJ" /></a>
+        <a href="/" className="esp-logo"><img src="/logo-transparent.png" alt="Reboot BJ" /></a>
         <div className="esp-user">
           <div className="esp-greet">
             Bonjour, <em>{user.prenom}</em>.

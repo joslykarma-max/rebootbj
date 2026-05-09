@@ -98,7 +98,7 @@ export default function Bienvenue() {
   return (
     <main className="ob-shell" style={{ backgroundImage: `url(${BG[step]})` }}>
       <div className="ob-veil" />
-      <a href="/" className="ob-logo"><img src="/logo.png" alt="Reboot BJ" /></a>
+      <a href="/" className="ob-logo"><img src="/logo-transparent.png" alt="Reboot BJ" /></a>
       {mode === 'new' && (
         <div className="ob-dots">
           {[0, 1, 2, 3, 4].map(i => <span key={i} className={`ob-dot${i === step ? ' on' : i < step ? ' done' : ''}`} />)}

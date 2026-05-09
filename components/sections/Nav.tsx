@@ -28,7 +28,7 @@ export default function Nav() {
     <>
       <nav className={`site-nav${scrolled ? ' scrolled' : ''}`}>
         <a href="/" className="nav-logo-img">
-          <img src="/logo.png" alt="Reboot BJ" />
+          <img src="/logo-transparent.png" alt="Reboot BJ" />
         </a>
         <ul className="nav-links">
           <li><a href="#histoire" onClick={e => { e.preventDefault(); scroll('histoire') }}>Histoire</a></li>
