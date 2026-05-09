@@ -1,53 +1,55 @@
 'use client'
 import { useEffect, useState } from 'react'
+import Image from 'next/image'
 
 export default function Bientot() {
   const [filled, setFilled] = useState(0)
 
   useEffect(() => {
-    const t = setTimeout(() => setFilled(88), 300)
+    const t = setTimeout(() => setFilled(88), 400)
     return () => clearTimeout(t)
   }, [])
 
   return (
     <div className="cs-root">
-      <div className="cs-bg" />
-      <div className="cs-noise" />
+      {/* Blobs animés */}
+      <div className="cs-blob cs-blob-1" />
+      <div className="cs-blob cs-blob-2" />
+      <div className="cs-blob cs-blob-3" />
 
       <div className="cs-content">
-        <div className="cs-eyebrow">Reboot BJ</div>
+        {/* Logo */}
+        <div className="cs-logo-wrap">
+          <Image src="/logo.png" alt="Reboot BJ" width={280} height={140} className="cs-logo" priority />
+        </div>
 
-        <h1 className="cs-title">
-          Le Bénin<br />
-          <em>s&rsquo;éveille.</em>
-        </h1>
+        {/* Texte */}
+        <div className="cs-text-block">
+          <p className="cs-tagline">Vivez le Bénin !</p>
+          <p className="cs-lead">
+            Nous préparons une expérience hors du commun.<br />
+            Ouverture très bientôt.
+          </p>
+        </div>
 
-        <p className="cs-lead">
-          Quelque chose de grand se prépare.<br />
-          Nous finissons les derniers détails avant de vous ouvrir les portes.
-        </p>
-
+        {/* Barre */}
         <div className="cs-bar-wrap">
-          <div className="cs-bar-label">
-            <span>Préparation du voyage</span>
-            <span className="cs-bar-pct">88%</span>
+          <div className="cs-bar-labels">
+            <span>Préparation</span>
+            <span className="cs-bar-pct">88 %</span>
           </div>
           <div className="cs-bar-track">
             <div className="cs-bar-fill" style={{ width: `${filled}%` }} />
-            <div className="cs-bar-glow" style={{ left: `${filled}%` }} />
+            <div className="cs-bar-dot" style={{ left: `${filled}%` }} />
           </div>
         </div>
 
-        <div className="cs-divider" />
-
-        <p className="cs-sub">
-          Restez connectés —{' '}
+        {/* Contact */}
+        <p className="cs-contact">
+          Une question ?&nbsp;
           <a href="mailto:contact@rebootbj.com" className="cs-link">contact@rebootbj.com</a>
         </p>
       </div>
-
-      <div className="cs-deco-left">Bénin</div>
-      <div className="cs-deco-right">2026</div>
     </div>
   )
 }
