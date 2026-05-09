@@ -13,8 +13,6 @@ const SLIDES = [
   '/Destinations/Vivez-ganvie/trip-ganvie-4.jpg',
 ]
 
-const DURATION = 5000 // ms par slide
-
 export default function Bientot() {
   const [current, setCurrent] = useState(0)
   const [filled, setFilled] = useState(0)
@@ -25,43 +23,36 @@ export default function Bientot() {
   }, [])
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrent(c => (c + 1) % SLIDES.length)
-    }, DURATION)
+    const interval = setInterval(() => setCurrent(c => (c + 1) % SLIDES.length), 5000)
     return () => clearInterval(interval)
   }, [])
 
   return (
     <div className="cs-root">
-      {/* Diaporama */}
+      {/* Diaporama plein écran */}
       <div className="cs-slides">
         {SLIDES.map((src, i) => (
-          <div
-            key={src}
-            className="cs-slide"
-            style={{ opacity: i === current ? 1 : 0 }}
-          >
+          <div key={src} className="cs-slide" style={{ opacity: i === current ? 1 : 0 }}>
             <Image src={src} alt="" fill style={{ objectFit: 'cover' }} priority={i === 0} />
           </div>
         ))}
+        <div className="cs-slides-overlay" />
       </div>
 
-      {/* Voile blanc pour lisibilité */}
-      <div className="cs-veil" />
-
-      {/* Contenu */}
-      <div className="cs-content">
-        <div className="cs-logo-wrap">
-          <Image src="/logo.png" alt="Reboot BJ" width={280} height={140} className="cs-logo" priority />
+      {/* Carte centrale */}
+      <div className="cs-card">
+        {/* Logo sur fond blanc propre */}
+        <div className="cs-logo-box">
+          <Image src="/logo.png" alt="Reboot BJ" width={220} height={110} className="cs-logo" priority />
         </div>
 
-        <div className="cs-text-block">
-          <p className="cs-tagline">Vivez le Bénin !</p>
-          <p className="cs-lead">
-            Nous préparons une expérience hors du commun.<br />
-            Ouverture très bientôt.
-          </p>
-        </div>
+        <div className="cs-divider-gold" />
+
+        <p className="cs-tagline">Vivez le Bénin !</p>
+        <p className="cs-lead">
+          Nous préparons une expérience hors du commun.<br />
+          Ouverture très bientôt.
+        </p>
 
         <div className="cs-bar-wrap">
           <div className="cs-bar-labels">
@@ -79,7 +70,6 @@ export default function Bientot() {
           <a href="mailto:contact@rebootbj.com" className="cs-link">contact@rebootbj.com</a>
         </p>
 
-        {/* Indicateurs de slide */}
         <div className="cs-dots">
           {SLIDES.map((_, i) => (
             <button
