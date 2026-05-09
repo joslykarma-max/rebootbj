@@ -1,4 +1,5 @@
 'use client'
+/* eslint-disable @next/next/no-img-element */
 import { useEffect, useState } from 'react'
 import Image from 'next/image'
 
@@ -41,9 +42,9 @@ export default function Bientot() {
 
       {/* Carte centrale */}
       <div className="cs-card">
-        {/* Logo sur fond blanc propre */}
+        {/* Logo — img standard, fond blanc isolé */}
         <div className="cs-logo-box">
-          <Image src="/logo.png" alt="Reboot BJ" width={220} height={110} className="cs-logo" priority />
+          <img src="/logo.png" alt="Reboot BJ" className="cs-logo" />
         </div>
 
         <div className="cs-divider-gold" />
