@@ -1869,7 +1869,6 @@ select.fi option { background: var(--light); }
   width: clamp(160px, 22vw, 200px);
   height: auto;
   display: block;
-  mix-blend-mode: multiply;
 }
 
 /* Filet doré séparateur */

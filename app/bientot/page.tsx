@@ -44,7 +44,7 @@ export default function Bientot() {
       <div className="cs-card">
         {/* Logo — img standard, fond blanc isolé */}
         <div className="cs-logo-box">
-          <img src="/Destinations/Reboot.png" alt="Reboot BJ" className="cs-logo" fetchPriority="high" loading="eager" />
+          <img src="/logo-transparent.png" alt="Reboot BJ" className="cs-logo" fetchPriority="high" loading="eager" />
         </div>
 
         <div className="cs-divider-gold" />
