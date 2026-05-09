@@ -1859,11 +1859,7 @@ select.fi option { background: var(--light); }
   animation: cs-fade-up 0.8s 0.1s both;
 }
 
-/* Logo — fond blanc isolé pour garantir la visibilité */
 .cs-logo-box {
-  background: #ffffff;
-  border-radius: 4px;
-  padding: 12px 28px;
   margin-bottom: 24px;
   display: inline-flex;
   align-items: center;
@@ -1873,6 +1869,7 @@ select.fi option { background: var(--light); }
   width: clamp(160px, 22vw, 200px);
   height: auto;
   display: block;
+  mix-blend-mode: multiply;
 }
 
 /* Filet doré séparateur */
