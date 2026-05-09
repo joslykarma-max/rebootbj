@@ -1880,6 +1880,7 @@ select.fi option { background: var(--light); }
   width: clamp(200px, 30vw, 300px);
   height: auto;
   object-fit: contain;
+  mix-blend-mode: multiply;
 }
 
 /* Texte */
